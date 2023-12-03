@@ -1,0 +1,35 @@
+header:
+  version: 15
+
+defaults:
+  repos:
+    refspec: kirkstone
+
+repos:
+
+  poky:
+    url: https://git.yoctoproject.org/git/poky
+    layers:
+      meta:
+      meta-poky:
+
+env:
+  BB_LOGCONFIG: ""
+  TOOLCHAIN_DIR: ""
+
+local_conf_header:
+  base: |
+    CONF_VERSION = "2"
+    INIT_MANAGER = "systemd"
+    DL_DIR ?= "${TOPDIR}/../downloads"
+    SSTATE_DIR ?= "${TOPDIR}/../sstate-cache"
+
+  setup: |
+    PACKAGE_CLASSES = "package_deb"
+    EXTRA_IMAGE_FEATURES:append = " debug-tweaks"
+    DISTRO_FEATURES:remove = "ptest"
+
+machine: unset
+distro: poky
+target:
+  - core-image-minimal

@@ -1,0 +1,15 @@
+header:
+  version: 15
+  includes:
+    - base.yml
+    - includes/meta-openembedded.yml
+    - includes/meta-raspberry.yml
+
+local_conf_header:
+  base: |
+    CONF_VERSION = "2"
+    INIT_MANAGER = "systemd"
+
+machine: raspberrypi4
+distro: poky
+target: core-image-minimal

@@ -1,0 +1,7 @@
+header:
+  version: 15
+
+repos:
+  meta-raspberry:
+    url: https://github.com/agherzan/meta-raspberrypi.git
+    path: layers/meta-raspberry
